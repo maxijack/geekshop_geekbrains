@@ -1,38 +1,37 @@
-import datetime
-import json
-import os
-from django.shortcuts import render
 from django.conf import settings
+from django.shortcuts import render
+from django.utils import timezone
 
-
-def get_data_from_json(file_name):
-    static_url = os.path.join(settings.BASE_DIR, 'static/json/' + file_name)
-    with open(static_url, 'r', encoding='utf-8') as jsonFile:
-        json_data = json.load(jsonFile)
-        jsonFile.close()
-
-    return json_data
+from .models import Product, ProductCategory
 
 
 def main(request):
-    products_data = get_data_from_json('products.json')
-
     title = "главная"
-    content = {"title": title, "products": products_data}
+
+    products = Product.objects.all()
+
+    content = {"title": title, "products": products, "media_url": settings.MEDIA_URL}
     return render(request, "mainapp/index.html", content)
 
 
-def products(request):
+def products(request, pk=None):
     title = "продукты"
-    links_menu = get_data_from_json('links_menu.json')
-    same_products = get_data_from_json('same_products.json')
-    content = {"title": title, "links_menu": links_menu, "same_products": same_products}
+    links_menu = ProductCategory.objects.all()
+    same_products = Product.objects.all()
+    content = {
+        "title": title,
+        "links_menu": links_menu,
+        "same_products": same_products,
+        "media_url": settings.MEDIA_URL,
+    }
+    if pk:
+        print(f"User select category: {pk}")
     return render(request, "mainapp/products.html", content)
 
 
 def contact(request):
     title = "о нас"
-    visit_date = datetime.datetime.now()
+    visit_date = timezone.now()
     locations = [
         {"city": "Москва", "phone": "+7-888-888-8888", "email": "info@geekshop.ru", "address": "В пределах МКАД"},
         {

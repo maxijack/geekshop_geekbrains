@@ -1,0 +1,70 @@
+[
+  {
+    "model": "mainapp.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Стулья",
+      "description": "отличные стулья"
+    }
+  },
+  {
+    "model": "mainapp.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Столы",
+      "description": ""
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+      "category": 2,
+      "name": "Удобный стул",
+      "image": "",
+      "short_desc": "",
+      "description": "",
+      "price": "1979.56",
+      "quantity": 198
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "name": "Простой стул",
+      "image": "products_images/controll1.jpg",
+      "short_desc": "просто стул",
+      "description": "стул как стул",
+      "price": "1500.00",
+      "quantity": 100
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "name": "Трон для царя",
+      "image": "products_images/controll1_0MSa3sD.jpg",
+      "short_desc": "lkjjlkjkjdsf",
+      "description": "Трон описание тест",
+      "price": "9999.00",
+      "quantity": 7
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "name": "Трон для царя2",
+      "image": "products_images/controll1_0MSa3sD.jpg",
+      "short_desc": "lkjjlkjkjdsf",
+      "description": "Трон описание тест",
+      "price": "9999.00",
+      "quantity": 7
+    }
+  }
+]
