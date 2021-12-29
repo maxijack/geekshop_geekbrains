@@ -1,0 +1,57 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block menu %}
+    <div class="hero">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_menu.html' %}
+        </div>
+        <h1>График по ценам</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="container" style="width: 100%;">
+        <canvas id="pie-chart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+        var config = {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'Cost',
+                    data: {{ data|safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                    ],
+                    borderWidth: 1
+                }],
+                labels: {{ labels|safe }}
+            },
+            options: {
+                responsive: true
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            window.myPie = new Chart(ctx, config);
+        };
+
+    </script>
+
+    <div class="clr"></div>
+{% endblock %}
