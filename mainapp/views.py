@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.utils import timezone
 
 from .models import Product, ProductCategory
+import numpy as np
 
 
 def main(request):
@@ -49,3 +50,20 @@ def contact(request):
     ]
     content = {"title": title, "visit_date": visit_date, "locations": locations}
     return render(request, "mainapp/contact.html", content)
+
+
+def cost_chart(request):
+    labels = []
+    data = []
+
+    queryset = Product.objects.order_by('-price')
+    for product in queryset:
+        labels.append(product.name)
+        data.append(float(product.price))
+
+    content = {
+        'labels': labels,
+        'data': data
+    }
+
+    return render(request, "mainapp/chart.html", content)
