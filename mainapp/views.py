@@ -41,14 +41,11 @@ def cost_chart(request):
     labels = []
     data = []
 
-    queryset = Product.objects.order_by('-price')
+    queryset = Product.objects.order_by("-price")
     for product in queryset:
         labels.append(product.name)
         data.append(float(product.price))
 
-    content = {
-        'labels': labels,
-        'data': data
-    }
+    content = {"labels": labels, "data": data}
 
     return render(request, "mainapp/chart.html", content)
