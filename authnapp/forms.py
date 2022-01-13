@@ -28,6 +28,12 @@ class ShopUserRegisterForm(UserCreationForm):
             raise forms.ValidationError("Вы слишком молоды!")
         return data
 
+    def clean_first_name(self):
+        data = self.cleaned_data["first_name"]
+        if not data:
+            raise forms.ValidationError("Введите Ваше имя!")
+        return data
+
     class Meta:
         model = ShopUser
         fields = ("username", "first_name", "password1", "password2", "email", "age", "avatar")
@@ -45,6 +51,12 @@ class ShopUserEditForm(UserChangeForm):
         if data < 18:
             raise forms.ValidationError("Вы слишком молоды!")
 
+        return data
+
+    def clean_first_name(self):
+        data = self.cleaned_data["first_name"]
+        if not data:
+            raise forms.ValidationError("Введите Ваше имя!")
         return data
 
     class Meta:
