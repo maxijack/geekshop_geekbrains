@@ -11,6 +11,14 @@ class Basket(models.Model):
     add_datetime = models.DateTimeField(verbose_name="время добавления", auto_now_add=True)
 
     @property
+    def product_counter(self):
+        _items = Basket.objects.filter(user=self.user)
+        _count = 0
+        for _item in _items:
+            _count += _item.quantity
+        return _count
+
+    @property
     def product_price(self):
         return self.product.price * self.quantity
 
