@@ -1,8 +1,9 @@
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
 from basketapp.models import Basket
+
 from .models import Contact, Product, ProductCategory
 
 
