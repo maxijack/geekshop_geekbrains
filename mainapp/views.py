@@ -88,3 +88,15 @@ def cost_chart(request):
     content = {"labels": labels, "data": data}
 
     return render(request, "mainapp/chart.html", content)
+
+
+def product(request, pk):
+    title = "продукты"
+    content = {
+        "title": title,
+        "links_menu": ProductCategory.objects.all(),
+        "product": get_object_or_404(Product, pk=pk),
+        "basket": get_basket(request.user),
+        "media_url": settings.MEDIA_URL,
+    }
+    return render(request, "mainapp/product.html", content)
