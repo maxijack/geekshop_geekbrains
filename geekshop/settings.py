@@ -142,3 +142,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
+
+# Set login path:
+#   https://docs.djangoproject.com/en/2.2/ref/settings/#login-url
+LOGIN_URL = "authnapp:login"
