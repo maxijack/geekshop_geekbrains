@@ -1,3 +1,5 @@
+import random
+
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
@@ -5,7 +7,6 @@ from django.utils import timezone
 from basketapp.models import Basket
 
 from .models import Contact, Product, ProductCategory
-import random
 
 
 def main(request):
