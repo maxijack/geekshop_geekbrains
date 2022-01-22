@@ -6,28 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mainapp', '0006_productcategory_is_active'),
+        ("mainapp", "0006_productcategory_is_active"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='is_active',
-            field=models.BooleanField(default=True, verbose_name='продукт активен'),
+            model_name="product",
+            name="is_active",
+            field=models.BooleanField(default=True, verbose_name="продукт активен"),
         ),
         migrations.AlterField(
-            model_name='contact',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="contact",
+            name="id",
+            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="product",
+            name="id",
+            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
         ),
         migrations.AlterField(
-            model_name='productcategory',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="productcategory",
+            name="id",
+            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
         ),
     ]
