@@ -21,6 +21,7 @@ def admin_main(request):
 
 class UsersListView(LoginRequiredMixin, ListView):
     model = ShopUser
+    paginate_by = 2
     template_name = "adminapp/users.html"
 
 
