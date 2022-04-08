@@ -16,11 +16,6 @@
             контакты
         </a>
     </li>
-    <li>
-        <a href="{% url 'chart' %}" class="{% if request.resolver_match.url_name == 'chart' %}active{% endif %}">
-            График цен на товары
-        </a>
-    </li>
     {% if user.is_authenticated %}
         <li>
             <a href="{% url 'auth:edit' %}">

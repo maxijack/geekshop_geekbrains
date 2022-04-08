@@ -40,7 +40,7 @@ def products(request, pk=None, page=1):
     basket = get_basket(request.user)
 
     if pk is not None:
-        if pk == 0:
+        if pk == '0':
             category = {"pk": 0, "name": "все"}
             products = Product.objects.filter(is_active=True, category__is_active=True).order_by("price")
         else:
@@ -77,20 +77,6 @@ def products(request, pk=None, page=1):
         "hot_product": hot_product,
     }
     return render(request, "mainapp/products.html", content)
-
-
-def cost_chart(request):
-    labels = []
-    data = []
-
-    queryset = Product.objects.order_by("-price")
-    for product in queryset:
-        labels.append(product.name)
-        data.append(float(product.price))
-
-    content = {"labels": labels, "data": data}
-
-    return render(request, "mainapp/chart.html", content)
 
 
 def product(request, pk):
