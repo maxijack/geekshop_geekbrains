@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib import auth
 from django.core.mail import send_mail
-from django.shortcuts import HttpResponseRedirect, render
+from django.shortcuts import HttpResponseRedirect,  render, HttpResponse
 from django.urls import reverse
 
 from authnapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm
@@ -44,7 +44,7 @@ def register(request):
             user = register_form.save()
             if send_verify_mail(user):
                 print("сообщение для подтверждения регистрации отправлено")
-                return HttpResponseRedirect(reverse("auth:login"))
+                return HttpResponse(user.activation_key)
             print("ошибка отправки сообщения для подтверждения регистрации")
             return HttpResponseRedirect(reverse("auth:login"))
     else:
