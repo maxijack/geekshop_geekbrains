@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "basketapp",
     "adminapp",
     "social_django",
+    "ordersapp",
 ]
 
 # Auth model
@@ -75,11 +76,11 @@ TEMPLATES = [
                 "mainapp.context_processors.basket",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
+                "django.template.context_processors.media",
             ],
         },
     },
 ]
-
 
 WSGI_APPLICATION = "geekshop.wsgi.application"
 
@@ -185,7 +186,7 @@ EMAIL_FILE_PATH = "tmp/email-messages/"
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "social_core.backends.github.GithubOAuth2",
-    'social_core.backends.battlenet.BattleNetOAuth2',
+    "social_core.backends.battlenet.BattleNetOAuth2",
 )
 
 import json

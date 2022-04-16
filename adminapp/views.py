@@ -11,6 +11,7 @@ from adminapp.forms import ProductCategoryEditForm, ProductEditForm, ShopUserAdm
 from authnapp.forms import ShopUserRegisterForm
 from authnapp.models import ShopUser
 from mainapp.models import Product, ProductCategory
+from ordersapp.models import Order
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -183,3 +184,10 @@ def product_delete(request, pk):
 
     content = {"title": title, "product_to_delete": product, "media_url": settings.MEDIA_URL}
     return render(request, "adminapp/product_delete.html", content)
+
+class OrderListView(LoginRequiredMixin, ListView):
+    model = Order
+    paginate_by = 10
+    template_name = "adminapp/orders.html"
+
+
