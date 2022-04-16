@@ -186,7 +186,7 @@ EMAIL_FILE_PATH = "tmp/email-messages/"
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "social_core.backends.github.GithubOAuth2",
-    'social_core.backends.battlenet.BattleNetOAuth2',
+    "social_core.backends.battlenet.BattleNetOAuth2",
 )
 
 import json
